@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+
+{% block page_title %} ویرایش کتاب {{ book.title }} {% endblock page_title %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary">ذخیره</button>
+    </form>
+    <br>
+{% endblock content %}

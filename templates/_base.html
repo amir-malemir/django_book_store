@@ -11,6 +11,9 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block styles %}
+        
+    {% endblock styles %}
 
     <title>{% block page_title %}{% endblock page_title %}</title>
 </head>
@@ -33,9 +36,9 @@
             </div>
         </div>
         {% if user.is_authenticated %}
-            <div class="mx-2 text-white">خوش آمدی {{ user.username }} | <button type="button"><a class="link-light text-decoration-none" href="{% url 'logout' %}">خروج</a></button>
+            <div class="mx-2 text-white">خوش آمدی {{ user.username }} | <form action="{% url 'logout' %}" method="post">  <p> {% csrf_token %} <button type="submit">Logout</button> </form>
         {% else %}
-            <a class="link-light text-decoration-none" href="{% url 'login' %}">ورود</a> | <a href="{% url 'signup' %}">ثبت نام</a>
+            <a class="link-light text-decoration-none" href="{% url 'login' %}">ورود</a> | <a class="link-light text-decoration-none" href="{% url 'signup' %}">ثبت نام</a>
             
         {% endif %}
         </div>

@@ -4,7 +4,7 @@
 {% block page_title %} ویرایش کتاب {{ book.title }} {% endblock page_title %}
 
 {% block content %}
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
         <button type="submit" class="btn btn-primary">ذخیره</button>
